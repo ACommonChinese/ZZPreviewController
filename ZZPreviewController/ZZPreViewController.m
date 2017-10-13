@@ -51,7 +51,7 @@
             self.tempOriginContentViewFrame = self.contentView.frame;
             [self.view addSubview:self.contentView];
         }
-        // NSLog(@"%d", self.view.alpha);
+        
         [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.view.alpha = 1;
         } completion:^(BOOL finished) {
@@ -66,11 +66,11 @@
     CGRect transitionToRect   = self.tempOriginContentViewFrame = self.contentView.frame;
     self.contentView.frame = transitionFromRect;
     [self.view addSubview:self.contentView];
-    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.contentView.frame = transitionToRect;
-        // self.view.backgroundColor = self.backgroundColorTemporarily;
+    
+    [UIView animateWithDuration:0.7 delay:0.1 usingSpringWithDamping:0.5 initialSpringVelocity:1 options:UIViewAnimationOptionTransitionNone animations:^{
+         self.contentView.frame = transitionToRect;
     } completion:^(BOOL finished) {
-        [self previewControllerDidShow];
+       [self previewControllerDidShow];
     }];
 }
 
