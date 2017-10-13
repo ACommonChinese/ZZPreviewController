@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0C21361F90984C001A587F /* ZZCustomPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0C21351F90984C001A587F /* ZZCustomPreviewController.m */; };
 		DAB0AC941F8F88E5009A3990 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB0AC931F8F88E5009A3990 /* AppDelegate.m */; };
 		DAB0AC971F8F88E5009A3990 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB0AC961F8F88E5009A3990 /* ViewController.m */; };
 		DAB0AC9A1F8F88E5009A3990 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAB0AC981F8F88E5009A3990 /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA0C21341F90984C001A587F /* ZZCustomPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCustomPreviewController.h; sourceTree = "<group>"; };
+		DA0C21351F90984C001A587F /* ZZCustomPreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCustomPreviewController.m; sourceTree = "<group>"; };
 		DAB0AC8F1F8F88E5009A3990 /* ZZPreviewControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZPreviewControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAB0AC921F8F88E5009A3990 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DAB0AC931F8F88E5009A3990 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 				DAB0AC951F8F88E5009A3990 /* ViewController.h */,
 				DAB0AC961F8F88E5009A3990 /* ViewController.m */,
 				DAB0AC981F8F88E5009A3990 /* Main.storyboard */,
+				DA0C21341F90984C001A587F /* ZZCustomPreviewController.h */,
+				DA0C21351F90984C001A587F /* ZZCustomPreviewController.m */,
 				DAB0ACAB1F8F88F6009A3990 /* ZZPreviewController */,
 				DAB0AC9B1F8F88E5009A3990 /* Assets.xcassets */,
 				DAB0AC9D1F8F88E5009A3990 /* LaunchScreen.storyboard */,
@@ -159,6 +164,7 @@
 				DAB0ACA21F8F88E5009A3990 /* main.m in Sources */,
 				DAB0ACAA1F8F88EE009A3990 /* ZZPreViewController.m in Sources */,
 				DAB0AC941F8F88E5009A3990 /* AppDelegate.m in Sources */,
+				DA0C21361F90984C001A587F /* ZZCustomPreviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

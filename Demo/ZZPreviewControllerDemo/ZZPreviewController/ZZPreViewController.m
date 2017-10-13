@@ -56,6 +56,7 @@
             self.view.alpha = 1;
         } completion:^(BOOL finished) {
             self.contentView.hidden = NO;
+            [self previewControllerDidShow];
         }];
         return;
     }
@@ -69,12 +70,24 @@
         self.contentView.frame = transitionToRect;
         // self.view.backgroundColor = self.backgroundColorTemporarily;
     } completion:^(BOOL finished) {
+        [self previewControllerDidShow];
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)previewControllerDidShow {
+    if ([self.delegate respondsToSelector:@selector(previewControllerDidShow:)]) {
+        [self.delegate previewControllerDidShow:self];
+    } else if ([self respondsToSelector:@selector(previewControllerDidShow:)]) {
+        [self previewControllerDidShow:self];
+    }
+}
+
+- (void)previewControllerWillDismiss {
+    if ([self.delegate respondsToSelector:@selector(previewControllerWillDismiss:)]) {
+        [self.delegate previewControllerWillDismiss:self];
+    } else if ([self respondsToSelector:@selector(previewControllerWillDismiss:)]) {
+        [self previewControllerWillDismiss:self];
+    }
 }
 
 - (void)initPreviewWindowIfNeeded {
@@ -94,6 +107,10 @@
     self.previewWindow.rootViewController = nil;
     self.previewWindow = nil;
 }
+
+#pragma mark - <ZZPreViewControllerProtocol>
+- (void)previewControllerDidShow:(ZZPreViewController *)controller {}
+- (void)previewControllerWillDismiss:(ZZPreViewController *)controller {}
 
 #pragma mark - Public APIs
 
@@ -126,6 +143,8 @@
 }
 
 - (void)dismiss {
+    [self previewControllerWillDismiss];
+    
     self.isShowing = NO;
     if (self.fading) {
         [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{

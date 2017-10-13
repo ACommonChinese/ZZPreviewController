@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import "ZZPreViewController.h"
+#import "ZZCustomPreviewController.h"
 
-@interface ViewController ()
+@interface ViewController () <ZZPreViewControllerProtocol>
 
 @end
 
@@ -24,15 +25,39 @@
     // [previewController showFading];
 }
 
+- (IBAction)customButtonClick:(UIButton *)sender {
+    ZZCustomPreviewController *previewController = [[ZZCustomPreviewController alloc] init];
+    previewController.delegate = self; // 如果代理方法不想在本控制器中实现，则可以在ZZCustomPreviewController中实现
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
+    redView.backgroundColor = [UIColor redColor];
+    previewController.contentView = redView;
+    [previewController showFromView:sender];
+    // [previewController showFading];
+}
+
+- (IBAction)customButton2Click:(UIButton *)sender {
+    ZZCustomPreviewController *previewController = [[ZZCustomPreviewController alloc] init];
+    // previewController.delegate = self; // 在ZZCustomPreviewController中实现了代理方法
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
+    redView.backgroundColor = [UIColor redColor];
+    previewController.contentView = redView;
+    [previewController showFromView:sender];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
 
+#pragma mark - <ZZPreViewControllerProtocol>
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)previewControllerDidShow:(ZZPreViewController *)controller {
+    ZZCustomPreviewController *vc = (ZZCustomPreviewController *)controller;
+    [vc showCustomView];
 }
 
+- (void)previewControllerWillDismiss:(ZZPreViewController *)controller {
+    ZZCustomPreviewController *vc = (ZZCustomPreviewController *)controller;
+    [vc dismissCustomView];
+}
 
 @end

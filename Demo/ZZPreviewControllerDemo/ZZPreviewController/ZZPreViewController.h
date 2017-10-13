@@ -4,16 +4,34 @@
 //
 //  Created by liuweizhen on 2017/10/12.
 //  Copyright © 2017年 liuxing8807@126.com. All rights reserved.
-//
+//  https://github.com/ACommonChinese/ZZPreviewController
 
 #import <UIKit/UIKit.h>
+
+@class ZZPreViewController;
+
+@protocol ZZPreViewControllerProtocol<NSObject>
+/**
+ *  显示动画结束后回调
+ *  @param controller ZZPreViewController对象
+ */
+- (void)previewControllerDidShow:(ZZPreViewController *)controller;
+
+/**
+ *  结否动画即将结束回调
+ *  @param controller ZZPreViewController对象
+ */
+- (void)previewControllerWillDismiss:(ZZPreViewController *)controller;
+@end
 
 /**
  * 从指定视图位置以动画的形式放大进入预览，则调用 startPreviewFromRectInScreen:，传入一个 rect 即可开始预览，这种模式下会创建一个独立的 UIWindow 用于显示，所以可以达到盖住当前界面所有元素（包括顶部状态栏）的效果
  */
-@interface ZZPreViewController : UIViewController
+@interface ZZPreViewController : UIViewController <ZZPreViewControllerProtocol>
 
 @property (nonatomic) UIView *contentView;
+
+@property (nonatomic, weak) id<ZZPreViewControllerProtocol> delegate;
 
 /**
  *  从指定 rect 的位置以动画的形式进入预览
